@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for myBlog/routes/posts.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">myBlog/routes/</a> posts.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">19.05% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>16/84</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/32</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">10.53% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>2/19</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">19.05% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>16/84</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span></td><td class="text"><pre class="prettyprint lang-js">var express = require("express");
+var router = express.Router();
+var path = require("path");
+var checkLogin  = require("../middlewares/check").checkLogin;
+var PostsModel = require("./../models/posts");
+var CommentsModel = require("./../models/comment");
+&nbsp;
+router.get("/create",checkLogin,<span class="fstat-no" title="function not covered" >function(req,res,next){</span>
+<span class="cstat-no" title="statement not covered" >    res.render("create");</span>
+})
+router.post("/create",checkLogin,<span class="fstat-no" title="function not covered" >function(req,res,next){</span>
+<span class="cstat-no" title="statement not covered" >    var title= req.fields.title;</span>
+<span class="cstat-no" title="statement not covered" >    var content = req.fields.content;</span>
+<span class="cstat-no" title="statement not covered" >    var passage ={</span>
+        title:title,
+        content:content,
+        author:req.session.user._id,
+    }
+<span class="cstat-no" title="statement not covered" >    try{</span>
+<span class="cstat-no" title="statement not covered" >       if(!title || !content){</span>
+<span class="cstat-no" title="statement not covered" >           throw new Error("标题和内容不能为空");</span>
+       }
+    } catch(err){
+<span class="cstat-no" title="statement not covered" >       req.flash("error",err.message);</span>
+<span class="cstat-no" title="statement not covered" >       return res.redirect("back");</span>
+    }
+<span class="cstat-no" title="statement not covered" >    PostsModel.createPassage(passage).then(<span class="fstat-no" title="function not covered" >function(result){</span></span>
+<span class="cstat-no" title="statement not covered" >       req.flash("success",'创建文章成功');</span>
+<span class="cstat-no" title="statement not covered" >       return res.redirect("/posts/list");</span>
+    }).catch(<span class="fstat-no" title="function not covered" >function(err){</span>
+<span class="cstat-no" title="statement not covered" >       req.flash("error",err.message);</span>
+<span class="cstat-no" title="statement not covered" >       return res.redirect("back");</span>
+    })
+});
+router.get("/list",checkLogin, function(req,res,next){
+    PostsModel.findAllPassages().then(function(passageList){
+        res.render("passageList",{passageList:passageList});
+    });
+});
+router.get("/:postId",checkLogin,<span class="fstat-no" title="function not covered" >function(req,res,next){</span>
+<span class="cstat-no" title="statement not covered" >    const postId = req.params &amp;&amp; req.params.postId;</span>
+<span class="cstat-no" title="statement not covered" >    Promise.all([PostsModel.increasePv(postId),PostsModel.findPassageById(postId),CommentsModel.findAllComments(postId)]).then(<span class="fstat-no" title="function not covered" >function(result){</span></span>
+<span class="cstat-no" title="statement not covered" >        const blogDetail = result[1];</span>
+<span class="cstat-no" title="statement not covered" >        let comments = result[2];</span>
+<span class="cstat-no" title="statement not covered" >        if(comments &amp;&amp; comments.length &gt; 0){</span>
+<span class="cstat-no" title="statement not covered" >            comments.forEach(item =&gt;{</span>
+<span class="cstat-no" title="statement not covered" >                item.author.avatar = item.author.avatar ? item.author.avatar.split(path.sep).pop(): 'detail-avatar.png';</span>
+            }); 
+        }
+<span class="cstat-no" title="statement not covered" >        if(!blogDetail){</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error("该文章不存在")</span>
+        };
+<span class="cstat-no" title="statement not covered" >        res.render("passageDetail",{blogDetail:blogDetail,comments:comments});</span>
+    }).catch(<span class="fstat-no" title="function not covered" >function(err){</span>
+<span class="cstat-no" title="statement not covered" >        req.flash("error",err.message);</span>
+<span class="cstat-no" title="statement not covered" >        return res.redirect("/posts/list");</span>
+    });
+});
+router.get("/:postId/edit",checkLogin,<span class="fstat-no" title="function not covered" >function(req,res,next){</span>
+<span class="cstat-no" title="statement not covered" >    const postId = req.params &amp;&amp; req.params.postId;</span>
+<span class="cstat-no" title="statement not covered" >    const author = req.session.user._id;</span>
+<span class="cstat-no" title="statement not covered" >    PostsModel.getRawByPostId(postId).then(<span class="fstat-no" title="function not covered" >function(blogEdit){</span></span>
+<span class="cstat-no" title="statement not covered" >        if(!blogEdit){</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error("该文章不存在");</span>
+        }
+<span class="cstat-no" title="statement not covered" >        if(author.toString() !== blogEdit.author._id.toString()){</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error('权限不足');</span>
+        }
+<span class="cstat-no" title="statement not covered" >        res.render('passageEdit',{</span>
+            blogEdit:blogEdit
+        })
+    })
+});
+router.post("/:postId/edit",checkLogin,<span class="fstat-no" title="function not covered" >function(req,res,next){</span>
+<span class="cstat-no" title="statement not covered" >    const postId = req.params &amp;&amp; req.params.postId;</span>
+<span class="cstat-no" title="statement not covered" >    var title= req.fields.title;</span>
+<span class="cstat-no" title="statement not covered" >    var content = req.fields.content;</span>
+<span class="cstat-no" title="statement not covered" >    var passage ={</span>
+        title:title,
+        content:content,
+        author:req.session.user._id,
+    }
+<span class="cstat-no" title="statement not covered" >    try{</span>
+<span class="cstat-no" title="statement not covered" >       if(!title || !content){</span>
+<span class="cstat-no" title="statement not covered" >           throw new Error("标题和内容不能为空");</span>
+       }
+    } catch(err){
+<span class="cstat-no" title="statement not covered" >       req.flash("error",err.message);</span>
+<span class="cstat-no" title="statement not covered" >       return res.redirect("back");</span>
+    }
+<span class="cstat-no" title="statement not covered" >    PostsModel.updatePostById(postId,passage).then(<span class="fstat-no" title="function not covered" >function(result){</span></span>
+<span class="cstat-no" title="statement not covered" >        req.flash("success",'编辑文章成功');</span>
+<span class="cstat-no" title="statement not covered" >        return res.redirect("/posts/list");</span>
+    }).catch(<span class="fstat-no" title="function not covered" >function(err){</span>
+<span class="cstat-no" title="statement not covered" >        req.flash("error",err.message);</span>
+<span class="cstat-no" title="statement not covered" >        return res.redirect("back");</span>
+    })
+});
+router.get("/:postId/delete",checkLogin,<span class="fstat-no" title="function not covered" >function(req,res,next){</span>
+<span class="cstat-no" title="statement not covered" >    const postId = req.params &amp;&amp; req.params.postId;</span>
+<span class="cstat-no" title="statement not covered" >    const author = req.session.user._id;</span>
+<span class="cstat-no" title="statement not covered" >    PostsModel.getRawByPostId(postId).then(<span class="fstat-no" title="function not covered" >function(passage){</span></span>
+<span class="cstat-no" title="statement not covered" >        try{</span>
+<span class="cstat-no" title="statement not covered" >            if(!passage){</span>
+<span class="cstat-no" title="statement not covered" >                throw new Error("该文章不存在");</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if(author.toString() !== passage.author._id.toString()){</span>
+<span class="cstat-no" title="statement not covered" >                throw new Error('权限不足');</span>
+            }
+        } catch(err){
+<span class="cstat-no" title="statement not covered" >            req.flash("error",err.message);</span>
+<span class="cstat-no" title="statement not covered" >           return res.redirect("back");</span>
+        }
+<span class="cstat-no" title="statement not covered" >        PostsModel.delPostById(postId).then(<span class="fstat-no" title="function not covered" >function(result){</span></span>
+<span class="cstat-no" title="statement not covered" >            CommentsModel.deleteAllComments(postId).then(() =&gt;{</span>
+<span class="cstat-no" title="statement not covered" >                req.flash('success','删除文章成功');</span>
+<span class="cstat-no" title="statement not covered" >                return res.redirect("/posts/list");</span>
+            }).catch(err =&gt;{
+<span class="cstat-no" title="statement not covered" >                req.flash("error",err.message);</span>
+<span class="cstat-no" title="statement not covered" >                return res.redirect('back'); </span>
+            })
+        }).catch(<span class="fstat-no" title="function not covered" >function(err){</span>
+<span class="cstat-no" title="statement not covered" >            req.flash("error",err.message);</span>
+<span class="cstat-no" title="statement not covered" >            return res.redirect('back');</span>
+        })
+    }).catch(<span class="fstat-no" title="function not covered" >function(err){</span>
+<span class="cstat-no" title="statement not covered" >        req.flash("error",err.message);</span>
+<span class="cstat-no" title="statement not covered" >        return res.redirect('back');</span>
+    })
+})
+&nbsp;
+module.exports = router;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Dec 18 2018 17:39:13 GMT+0800 (CST)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

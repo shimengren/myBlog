@@ -1,0 +1,158 @@
+<script type="text/javascript">
+   $(document).ready(function(){
+           const fragment ='<a href="/posts/${_id}" class="passage-list-wrapper">'+
+'                <div class="passages-title">${title}</div>'+
+'                <div class="passage-content">'+
+'                <div>${content}</div>'+
+'                </div>'+
+'                <div class="flex">'+
+'                    <div class="list-left-wrapper">'+
+'                    <img src="/image/${author.avatar}"/>'+
+'                    <span class="name">${author.name}</span>'+
+'                    <span class="time">${timeTag}</span>'+
+'                    </div>'+
+'                    <div class="list-right-wrapper">'+
+'                    <span class="num-info margin-right"><span class="text">${pv}</span>阅读</span>    '+
+'                    <span class="num-info"><span class="text">${commentNum}</span>评论</span>'+
+'                    </div>'+
+'                </div>'+
+'            </a>';
+      $.template( "item", fragment );
+     var element = $('#summernote');
+    if(element){
+        // 设置summernote富文本编辑器初始化样式
+        element.summernote({
+        lang:'zh-CN',
+        placeholder: '请输入文章内容',
+        disableDragAndDrop: true,
+        tabsize: 2,
+        height: 300,   // 定义编辑框高度
+        minHeight: null,  // 定义编辑框最低的高度
+        maxHeight: null,  // 定义编辑框最高德高度
+      });
+    }
+    var num = 2;
+    const passageList = $('#passage-list');
+    let loading = false;
+    let hasMore = true;
+    // 文章列表页滚动加载下一页
+    if(passageList){
+      const parent = document.documentElement || document.body;
+      console.log('parent', parent);
+      const parentHeight = parent.clientHeight || parent.offsetHeight; // 获取屏幕的高度
+      const navHeight = $('#navBar').height();
+      const height = passageList.height();
+      $(window).bind('scroll',function(){
+        const scrollTop = parent.scrollTop || 0;
+            if((height - scrollTop) - (parentHeight - navHeight) < 30) { // 判断滚动到底
+                if(!loading && hasMore){
+                loading = true;
+                $.ajax({
+                    url:`/posts/list?pageSize=10&&pageNum=${num}`,
+                    success: function(result){
+                        loading = false;
+                        console.log('result', result[0])
+                        $.tmpl( "item", result).appendTo('#passage-list');
+                        num ++;
+                        if(!(result && result.lenght > 0)) {
+                          hasMore = false;
+                        }
+                    }
+                });
+            }
+        }
+      });
+    }
+    const textArea = $("#textarea");
+    const commentButton = $("#comment-button");
+    const secondReply = $(".second-reply");
+    console.log('secondReply', secondReply[0]);
+    // 二级回复增加联动效果
+    secondReply.each(function(index,item){
+        $(item).click(function(){
+        textArea.focus();
+        const link = $(item).attr('link');
+        const author = $(item).attr('author');
+        const commentForm = $("#comment-form");
+        const topComment = $("#topPerson");
+        topComment.val(author);
+        console.log('topCommenttopComment', topComment.val(), author);
+        textArea.attr('placeholder','回复'+author);
+        commentForm.attr('action',link);
+      })
+    })
+    addAnimation();
+    function addAnimation(){
+      // 文章详情页用css设置动画效果
+    if(textArea && commentButton){
+        textArea.focus(function(){
+            textArea.animate({height:'150px'});
+            commentButton.css('display', 'flex');
+
+        })
+    }
+    }
+})
+//     // 循环创建
+//     function createDocumentFragment(list){
+//        var document = null;
+//        list.forEach(function(item){
+//         document = !document ? compileTpl($(fragment)[0],item) : document.after(compileTpl($(fragment)[0],item));
+//         console.log('documentdocument', $(document).childNodes);
+//        });
+//        $('#passage-list').append(document);
+//     }
+//    });
+//    // 处理{}里面的字符串相关的内容
+//    function patternDealt(value,data){
+//     const pattern = /\{(.+?)\}/g;
+//     if(pattern.test(value)) {
+//       const value = pattern.test(value); // 获取的内容包含{}
+//       const realVal = value.substring(1,value.length-1);
+//       let arr = realVal.split('.');
+//       let val = data;
+//       arr.forEach(function(subItem){
+//         val = val[subItem];
+//       });
+//       return val;
+//     } else {
+//         return '';
+//     }
+// }
+//    function compileTpl(tpl,data){
+//     console.log('tplBefore', tpl.childNodes);
+//      if(tpl.childNodes.length > 0){
+//          console.log('tpl.childNodes', tpl.childNodes[1]);
+//          for(let i = 0; i <= tpl.childNodes.length; i++){
+//              const item = $(tpl.childNodes[i]);
+//         //     // tpl.childNodes.forEach(function(item, index){
+//             console.log('compileTpl', item, i);
+//         //     debugger;
+//         //     // 递归遍历整个dom结构
+//         //     // compileTpl(item, data);
+//         //     // 对元素的相关属性进行处理
+//             const attributes = item && item.attributes ? item.attributes : [];
+//             console.log('attributes', attributes);
+//             if(attributes && attributes.length > 0){
+//                 attributes.forEach(function(items){
+//                     console.log('items', items);
+//                     const value = patternDealt(item.nodeValue, data);
+//                     if(value){ //存在模版内容
+//                         item.attr(name,items.nodeValue.replace(pattern,value));
+//                     }
+//                 })
+//             }
+//         //       // 对text文本节点进行相关处理
+//         //    if (item.nodeType === 3) {
+//         //      const value = patternDealt(item.nodeValue, data);
+//         //      tpl.innerHTML = value; // 更换父节点的html
+//         //    }
+//         //    });
+//          }
+//      }
+//      console.log('tplAfter', tpl);
+//      return tpl;
+//    }
+</script>
+</body>
+</html>

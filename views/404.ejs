@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= blog.title %></title>
+    <style>
+       .not-found{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items: center;
+        margin-top:40px;
+      }
+      .text{
+        font-size:20px;
+      }
+      .link{
+        margin-top:10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="not-found">
+      <div class="text">404 页面找不到了</div>
+      <a href="/posts/list" class="link">返回首页</a>
+    </div>
+  </body>
+</html>

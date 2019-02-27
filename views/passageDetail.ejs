@@ -1,0 +1,73 @@
+<%- include("header") %>
+
+<%- include("components/tab") %>
+<div class="content-wrapper">
+  <div class="content passage-detail">
+    <h3><%= blogDetail.title %></h3>
+    <div>
+      <span class="tag"><%= blogDetail.create_at %></span>
+      <a class="margin-left"><%= blogDetail.author.name %></a>
+      <!-- <span class="margin-left">阅读数：<%= blogDetail.pv || 0 %></span> -->
+    </div>
+    <pre><%- blogDetail.content %></pre>
+    <div class="text-align-right">
+      <% if(user && blogDetail.author._id.toString() === user._id.toString()){ %>
+        <a class="item" href="/posts/<%= blogDetail._id %>/edit">编辑</a>
+        <a class="item" href="/posts/<%= blogDetail._id %>/delete">删除</a>
+      <% } %>
+    </div>
+    <% if(user){ %>
+        <div class="create-comment margin-20">
+          <form method="post" id="comment-form" enctype="multipart/form-data" action="/comments/create">
+            <input name="blogId" hidden value="<%=blogDetail._id %>"/>
+            <div class="create-wrapper">
+              <img src="/image/<%= user.avatar %>" class="logo"/>
+              <textarea name="comment" type="text" placeholder="想对作者说点什么" id="textarea" class="comment-textarea" ></textarea>
+            </div>
+            <input hidden name="topPerson" id="topPerson">
+            <div class="button-wrapper" id="comment-button">
+               <button type="submit" class="button-style">发表评论</button>
+            </div>
+          </form>
+        </div>
+    <% } %>
+    <div class="comments">
+            <% if(comments && comments.length > 0){ %>
+                <% comments && comments.forEach(function(comment){ %>
+                    <div class="comment-wrapper">
+                      <div class="top-comment">
+                        <img src="/image/<%=comment.author.avatar %>" />
+                        <div class="comment-content">
+                            <span class="comment"><%=comment.author.name%>:<%-comment.comment %></span>
+                            <span class="comment-time">(<%=comment.create_at %>)</span>
+                            <%if(comment.author && comment.author._id.toString() === user._id.toString()){ %>
+                                <a href="/comments/<%= comment._id %>/delete" class="comment-delete">删除</a>
+                            <% } %>
+                            <a class="comment-delete second-reply"   link="/comments/<%= comment._id %>/reply" author="<%=comment.author.name %>">回复</a>
+                        </div>
+                     </div>
+                       <% if(comment.replys && comment.replys.length > 0) {%>
+                        <div class="second-comment">
+                           <% comment.replys.forEach(function(subComment) { %>
+                            <div class="item-wrapper">
+                              <img src="/image/<%= subComment.author.avatar %>" />
+                              <div class="comment-content">
+                                  <span class="comment"><%=subComment.author.name%> <span class="top-person">回复<%=subComment.topPerson%> </span>:<%-subComment.comment %></span>
+                                  <span class="comment-time">(<%=subComment.create_at %>)</span>
+                              </div>
+                              <%if(subComment.author && subComment.author._id.toString() === user._id.toString()){ %>
+                                <a href="/comments/<%= subComment._id %>/delete?topCommentId=<%= comment._id%>" class="comment-delete">删除</a>
+                               <% } %>
+                               <a class="comment-delete second-reply"   link="/comments/<%= comment._id %>/reply" author="<%=subComment.author.name %>">回复</a>
+                            </div>
+                           <% }) %>
+                        </div>
+                      <% } %>
+                    </div>
+                 <% })%>
+            <% } %>
+        </div>
+  </div>
+</div>
+
+<%- include("footer") %>

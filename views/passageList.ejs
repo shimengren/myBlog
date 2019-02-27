@@ -1,0 +1,46 @@
+
+<%- include("header") %>
+
+<%- include("components/tab") %>
+<div class="content-wrapper">
+  <div class="row">
+      <div class="col-xs-2" id="myScrollspy">
+        <ul class="nav nav-tabs nav-stacked" id="myNav">
+          <% categoryTypes.forEach(function(item){%>
+             <% if(item.value == currentCategoryType ){ %>
+              <li class="active"><a  href="/posts/list?pageNum=1&&type=<%=item.value %>"><%=item.name %></a></li>
+             <% } else { %>
+              <li><a href="/posts/list?pageNum=1&&type=<%=item.value %>"><%=item.name %></a></li>
+             <% } %>
+          <% }) %>
+        </ul>
+    </div>
+    <div class="col-xs-10" >
+        <div id="passage-list">
+            <% for (var i =0; i < passageList.length; i++){ %>
+             <a href="/posts/<%= passageList[i]._id %>" class="passage-list-wrapper">
+                 <div class="passages-title"><%= passageList[i].title %></div>
+                 <div class="passage-content">
+                   <div><%- passageList[i].content %></div>
+                 </div>
+                 <div class="flex">
+                    <div class="list-left-wrapper">
+                      <img src="/image/<%= passageList[i].author.avatar %>"/>
+                      <span class="name"><%= passageList[i].author.name %></span>
+                      <span class="time"><%= passageList[i].timeTag %></span>
+                    </div>
+                    <div class="list-right-wrapper">
+                      <!-- <span class="num-info margin-right"><span class="text"><%=passageList[i].pv %></span>阅读</span>     -->
+                      <span class="num-info"><span class="text"><%=passageList[i].commentNum %></span>评论</span>
+                    </div>
+                 </div>
+                </a>
+           <% } %>
+          </div>
+    </div>
+  </div>
+</div>
+  
+
+<%- include("footer") %>
+

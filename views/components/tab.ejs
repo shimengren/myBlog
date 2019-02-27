@@ -1,0 +1,38 @@
+<nav class="navbar navbar-default navbar-form margin-0" role="navigation" id="navBar">
+    <div class="container-fluid flex">
+      <div class="navbar-header">
+      <img src="/image/logo.png" />
+      </div>
+      <div class="flex">
+          <div class="input-group">
+              <input type="text" class="form-control" placeholder="搜文章">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                  搜索
+                </button>
+              </span>
+            </div>
+          <ul class="nav navbar-nav navbar-right">
+              <% if(user) {%>
+                <li><a href="/posts/create" class="padding"><span class="glyphicon glyphicon-edit"></span> 写博客</a></li>
+                <li class="dropdown"> 
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+                       <img src="/image/<%= user.avatar %>"/><b class="caret"></b> 
+                    </a> 
+                    <ul class="dropdown-menu"> 
+                        <li><a href="#">账号设置</a></li>
+                        <li class="divider"></li> 
+                        <li><a href="#">我的博客</a></li>
+                        <li><a href="#">管理博客</a></li>
+                        <li class="divider"></li> 
+                        <li><a href="/signout">退出<span class="sign-out-name"> <%= user.name %></span></a></li>
+                    </ul> 
+                </li>
+              <% } else { %>
+                <li><a href="/signup" class="padding"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+                <li><a href="/signin"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+              <% } %>
+          </ul>
+      </div>
+    </div>
+  </nav>
